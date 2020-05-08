@@ -26,7 +26,7 @@ Then after a category is selected...
 
 ### `PROXY SERVER`
 
-As CORS was not enabled on the API endpoint (`http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com/api/products/1`) I created a proxy server that fetches it. Thus data in this App is fetched from the proxy, which fetches it from the endpoint.
+As CORS was not enabled on the API endpoint (`http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com/api/products/1`) I created a `Node.js` proxy server, using Express that fetches data from the API endpoint. Thus data in this App is fetched from the proxy, which fetches it from the endpoint.
 
 The proxy server is at `https://kgnserver--zubinpratap.repl.co/data`. It should cold start upon receiving a get request, even if you don't navigate to the server repl at the link below.
 
