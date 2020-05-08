@@ -20,7 +20,7 @@ export function calcAvgCubicWeight(
   // handle edge cases
   if (prods.length === 0 || selectedCategory === '') return '0';
 
-  // calculate for each
+  // calculate for each, in a single pass through the data
   for (const prod of prods) {
     // check if prod matches filter
     if (prod.category === selectedCategory) {
@@ -37,11 +37,16 @@ export function calcAvgCubicWeight(
     }
   }
   if (totalCubicWeight === 0) return '0';
+  // else
   return (totalCubicWeight / count).toFixed(2);
 }
 
 export async function fetchProductData(): Promise<Array<IProduct>> {
   const TEMP_SERVER = 'https://kgnserver--zubinpratap.repl.co/data';
-  const res = await axios.get(TEMP_SERVER);
-  return res.data.products as Array<IProduct>;
+  try {
+    const res = await axios.get(TEMP_SERVER);
+    return res.data.products as Array<IProduct>;
+  } catch (error) {
+    throw new Error(` ${error}. Cannot fetch product data.`);
+  }
 }

@@ -32,13 +32,12 @@ function App() {
 
   // side effect - calculate counts for each category based on products in state
   React.useEffect(() => {
-    setCategoryCounts((prev) => {
-      products.forEach((item) => {
-        prev[item.category] = prev[item.category] + 1 || 1;
-      });
-      const newState = { ...prev };
-      return newState;
+    let counts: { [key: string]: number } = {};
+    products.forEach((item) => {
+      counts[item.category] = counts[item.category] + 1 || 1;
     });
+
+    setCategoryCounts(counts);
   }, [products]); // counts triggered any time fetched products state changes
 
   // handlers
