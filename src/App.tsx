@@ -83,6 +83,16 @@ function App() {
           </div>
         </>
       )}
+      <footer className='App-footer'>
+        Made by{' '}
+        <a
+          href='https://linkedin.com/in/zubinpratap'
+          rel='noopener noreferrer '
+          target='_blank'
+        >
+          Zubin
+        </a>
+      </footer>
     </div>
   );
 }

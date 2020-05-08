@@ -29,3 +29,18 @@
   border: 1px solid rgb(34, 120, 218);
   background-color: #fff;
 }
+
+.App-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ec1a3a;
+  color: white;
+  text-align: center;
+  padding-top: 1em;
+  margin: 0 auto;
+  font-size: 1rem;
+  height: 5%;
+  opacity: 0.7;
+}
