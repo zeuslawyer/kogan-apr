@@ -1,0 +1,31 @@
+.App {
+  font-size: 1.8rem;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.App-logo {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+}
+.App-body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.App-loading {
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.App-dropdown-products {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  color: #444;
+  line-height: 1.5;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0.5rem;
+  border: 1px solid rgb(34, 120, 218);
+  background-color: #fff;
+}
