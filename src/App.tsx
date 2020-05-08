@@ -42,7 +42,7 @@ function App() {
 
   // handlers
   const onDropdownClick = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.info(`selected: ${event.target.value}`);
+    console.info(`selected: ${event.target.value || 'null'}`);
     setSelectedCategory(event.target.value);
   };
 
