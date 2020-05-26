@@ -10,6 +10,44 @@ export interface IProduct {
     height?: number; // in cms
   };
 }
+
+// recursive func for paginated data from KGN endpoint
+export function fetchAllData(
+  path = '/api/products/1',
+  pageCount = 0,
+  data = []
+): Promise<Array<IProduct>> {
+  // base case
+  if (path === null) {
+    console.log(`Fetched data from ${pageCount} pages. No more pages.`);
+    return data;
+  }
+
+  const BASE_URL = 'http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com';
+  const url = BASE_URL + path;
+
+  return axios
+    .get(url)
+    .then((res) => {
+      const _nextPath = res.data.next;
+      console.log('...next page is', _nextPath);
+      path = res.data.next;
+      data.push(...res.data.objects); // concat data but reuse existing data array
+      pageCount++;
+      return fetchAllData(path, pageCount, data);
+    })
+    .catch((e) => {
+      if (e.response.status === 404) {
+        console.error(
+          `Something went wrong while fetching data from ${e.response.config.url}. Returned error ${e.response.status}. `
+        );
+        return data;
+      } else {
+        throw e;
+      }
+    });
+}
+
 export function calcAvgCubicWeight(
   prods: Array<IProduct>,
   selectedCategory: string,
